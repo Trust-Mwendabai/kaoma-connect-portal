@@ -2,7 +2,7 @@
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 import { Badge } from "@/components/ui/badge";
-import { Menu, Home, FileText, Building2, MessageSquare, AlertTriangle, Settings, LogOut } from "lucide-react";
+import { Menu, Home, FileText, Building2, MessageSquare, AlertTriangle, Settings, LogOut, Newspaper } from "lucide-react";
 
 interface NavigationProps {
   isLoggedIn: boolean;
@@ -23,6 +23,7 @@ const Navigation = ({
 }: NavigationProps) => {
   const menuItems = [
     { id: "home", label: "Home", icon: <Home className="h-4 w-4" />, public: true },
+    { id: "news", label: "News & Updates", icon: <Newspaper className="h-4 w-4" />, public: true },
     { id: "bursary", label: "Bursary Applications", icon: <FileText className="h-4 w-4" />, public: true },
     { id: "projects", label: "Development Projects", icon: <Building2 className="h-4 w-4" />, public: true },
     { id: "feedback", label: "Feedback", icon: <MessageSquare className="h-4 w-4" />, public: true },
@@ -35,12 +36,12 @@ const Navigation = ({
   );
 
   return (
-    <nav className="bg-white shadow-md border-b">
+    <nav className="bg-white/95 backdrop-blur-sm shadow-lg border-b border-gray-200">
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <div className="flex items-center space-x-3">
-            <div className="bg-blue-600 text-white p-2 rounded-lg">
+            <div className="bg-gradient-to-br from-blue-600 to-blue-700 text-white p-2 rounded-xl shadow-lg">
               <Building2 className="h-6 w-6" />
             </div>
             <div>
@@ -50,13 +51,13 @@ const Navigation = ({
           </div>
 
           {/* Desktop Menu */}
-          <div className="hidden md:flex items-center space-x-6">
+          <div className="hidden md:flex items-center space-x-2">
             {visibleMenuItems.map((item) => (
               <Button
                 key={item.id}
                 variant={activeSection === item.id ? "default" : "ghost"}
                 onClick={() => setActiveSection(item.id)}
-                className="flex items-center space-x-2"
+                className="flex items-center space-x-2 transition-all duration-200"
               >
                 {item.icon}
                 <span>{item.label}</span>
@@ -68,7 +69,7 @@ const Navigation = ({
           <div className="flex items-center space-x-3">
             {isLoggedIn ? (
               <div className="flex items-center space-x-3">
-                <Badge variant={userRole === "admin" ? "destructive" : "secondary"}>
+                <Badge variant={userRole === "admin" ? "destructive" : "secondary"} className="px-3 py-1">
                   {userRole === "admin" ? "Admin" : "Public User"}
                 </Badge>
                 <Button variant="outline" onClick={onLogout} className="hidden md:flex">
@@ -77,7 +78,7 @@ const Navigation = ({
                 </Button>
               </div>
             ) : (
-              <Button onClick={onLogin}>Login</Button>
+              <Button onClick={onLogin} className="bg-blue-600 hover:bg-blue-700">Login</Button>
             )}
 
             {/* Mobile Menu */}
