@@ -1,0 +1,13 @@
+[[headers]]
+  for = "/*.js"
+  [headers.values]
+    Content-Type = "text/javascript"
+
+[[headers]]
+  for = "/*.mjs"
+  [headers.values]
+    Content-Type = "text/javascript"
+
+# If you have an existing _redirects file, you can copy its content here
+# or keep it as a separate _redirects file in the public folder.
+# For now, let's just focus on the MIME type fix.
