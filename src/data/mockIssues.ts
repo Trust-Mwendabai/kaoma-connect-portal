@@ -24,7 +24,7 @@ export const mockIssues: Issue[] = [
     location: "Mayukwayukwa Village, Block A",
     reporter: "Community Chairman",
     date: "2024-01-18",
-    status: "urgent",
+    status: "reported",
     priority: "urgent",
     assignedTo: "Water Utilities",
     estimatedCompletion: "2024-01-20",
